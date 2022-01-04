@@ -8,7 +8,6 @@ namespace ServerBrowser.Models
 {
     public class CreateServersMap
     {
-        public int Id { get; set; }
         [Required]       
         public string Name { get; set; }
         [Required]

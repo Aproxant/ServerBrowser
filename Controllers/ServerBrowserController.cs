@@ -32,8 +32,8 @@ namespace ServerBrowser.Controllers
             {
                 return BadRequest(ModelState); 
             }
-            serverBrowserService.Create(dataPost);
-            return Created("Success",null);
+            int id=serverBrowserService.Create(dataPost);
+            return Created($"/restaurant/{id}", null);
         }
         [HttpDelete("{id}")]
         public ActionResult Delete([FromRoute] int id)
@@ -41,6 +41,16 @@ namespace ServerBrowser.Controllers
             if(serverBrowserService.Delete(id))          
                 return NoContent();
             return NotFound();
+        }
+        [HttpPut("{id}")]
+        public ActionResult Update([FromRoute] int id)
+        {
+            if(serverBrowserService.Update(id))
+            {
+                return NotFound();
+                
+            }
+            return Ok();
         }
     }
 }
