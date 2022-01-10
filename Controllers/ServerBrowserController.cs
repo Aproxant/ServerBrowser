@@ -45,7 +45,7 @@ namespace ServerBrowser.Controllers
         [HttpPut("{id}")]
         public ActionResult Update([FromRoute] int id)
         {
-            if(serverBrowserService.Update(id))
+            if(!serverBrowserService.Update(id))
             {
                 return NotFound();
                 

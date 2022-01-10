@@ -27,10 +27,14 @@ namespace ServerBrowser
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            
             services.AddControllers();
             services.AddDbContext<ServersDBContext>();
             services.AddAutoMapper(this.GetType().Assembly);
             services.AddScoped<IServerBrowserService, ServerBrowserService>();
+            
+            
+            services.AddHostedService<ServerCheckHostedService>();
             //services.AddSingleton<ServerBrowserCleaner>();
         }
 
