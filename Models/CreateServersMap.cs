@@ -12,5 +12,7 @@ namespace ServerBrowser.Models
         public string Name { get; set; }
         [Required]
         public string Ip { get; set; }
+        public bool Mode { get; set; }
+        public int PlayerNumber { get; set; }
     }
 }

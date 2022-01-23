@@ -34,7 +34,7 @@ namespace ServerBrowser
             services.AddScoped<IServerBrowserService, ServerBrowserService>();
             
             
-            services.AddHostedService<ServerCheckHostedService>();
+            //services.AddHostedService<ServerCheckHostedService>();
             //services.AddSingleton<ServerBrowserCleaner>();
         }
 
