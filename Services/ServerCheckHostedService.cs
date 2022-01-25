@@ -28,7 +28,7 @@ namespace ServerBrowser.Services
         {
             using var scope = serviceProvider.CreateScope();
             var db = scope.ServiceProvider.GetRequiredService<ServersDBContext>();
-            var server = db.ServerList.Where(x => EF.Functions.DateDiffSecond(x.lastActive,DateTime.Now)>30); 
+            var server = db.ServerList.Where(x => EF.Functions.DateDiffSecond(x.lastActive,DateTime.Now)>7); 
             if(server!=null)
             {
                 db.RemoveRange(server);

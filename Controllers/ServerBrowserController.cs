@@ -43,12 +43,15 @@ namespace ServerBrowser.Controllers
             return NotFound();
         }
         [HttpPut("{id}")]
-        public ActionResult Update([FromRoute] int id)
+        public ActionResult Update([FromBody] UpdateServer updateServer,[FromRoute] int id)
         {
-            if(!serverBrowserService.Update(id))
+            if(!ModelState.IsValid)
             {
-                return NotFound();
-                
+                BadRequest(ModelState);
+            }
+            if(!serverBrowserService.Update(id,updateServer))
+            {
+                return NotFound();                
             }
             return Ok();
         }

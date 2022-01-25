@@ -14,7 +14,7 @@ namespace ServerBrowser.Services
         IEnumerable<Servers> GetAll();
         int Create(CreateServersMap dataPost);
         bool Delete(int id);
-        bool Update(int id);
+        bool Update(int id,UpdateServer sDb);
     }
     public class ServerBrowserService : IServerBrowserService
     {
@@ -47,12 +47,14 @@ namespace ServerBrowser.Services
             dBContext.SaveChanges();
             return true;
         }
-        public bool Update(int id)
+        public bool Update(int id,UpdateServer sDb)
         {
             var server = dBContext.ServerList.FirstOrDefault(r => r.Id == id);
             if (server is null)
                 return false;
             server.lastActive = DateTime.Now;
+            server.Mode = sDb.Mode;
+            server.playerNumber = sDb.PlayerNumber;
             dBContext.SaveChanges();
             return true;
         }

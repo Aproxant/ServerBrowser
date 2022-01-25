@@ -34,8 +34,7 @@ namespace ServerBrowser
             services.AddScoped<IServerBrowserService, ServerBrowserService>();
             
             
-            //services.AddHostedService<ServerCheckHostedService>();
-            //services.AddSingleton<ServerBrowserCleaner>();
+            services.AddHostedService<ServerCheckHostedService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
